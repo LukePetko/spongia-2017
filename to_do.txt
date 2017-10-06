@@ -1,0 +1,43 @@
+Kód:
+  - mapa
+    - vykreslenie samotnej mapy
+    - vykreslenie tričiek - náhodne, aby ničomu neprekážali
+  - hráči
+    - vykreslenie
+    - pohyb
+    - branie tričiek
+    - zmena rýchlosti
+  - "Domček"
+    - dávanie tričiek dole
+  - časovač
+  - tvorba postáv
+    - výber vecí (vlasy, nohavice, pohlavie)
+    - tutorial k hre
+  - menu
+  - power-ups
+
+Grafika:
+  - mapa
+    - textúry stien
+    - textúry podlahy
+    - textúry "Domčeka"
+  - hráči
+    - základná postava
+    - vlasy
+    - nohavice
+  - tričká
+
+Audio:
+  - zvuky
+    - zdvíhanie tričiek
+    - pokladanie tričiek
+    - tvorba nových tričiek
+    - zobratie power-upu
+    - atď....
+  -hudba
+    - menu
+    - hra
+
+Ostatné:
+  - návrh rozloženia máp
+  - dvojjazyčnosť
