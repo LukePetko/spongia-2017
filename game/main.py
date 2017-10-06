@@ -7,7 +7,12 @@ def game_start():
     draw("levels/level_1.txt", root, game_canvas)
 
 root = Tk()
-game_canvas = Canvas(width = 400, heigh = 400, bg = "black")
+
+full_width, full_height = root.winfo_screenwidth(), root.winfo_screenheight()
+# root.overrideredirect(1)
+root.geometry("%dx%d+0+0" % (full_width, full_height))
+
+game_canvas = Canvas(width = full_height, heigh = full_height, bg = "black")
 game_canvas.pack()
 
 game_start()
