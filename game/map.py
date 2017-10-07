@@ -1,8 +1,7 @@
-<<<<<<< HEAD
 from random import *
-=======
+
 from movement import *
->>>>>>> 8308fd219a9954f70fe4b49880d15be70f0788f5
+from shirt import *
 
 def draw(level, root, game_canvas):
     level_file = open(level)
@@ -24,10 +23,6 @@ def draw(level, root, game_canvas):
                 game_canvas.create_rectangle(x * box_side, y * box_side, (x + 1) * box_side, (y + 1) * box_side, outline = "blue", fill = "blue")
             elif level_map[y][x] == "3":
                 game_canvas.create_rectangle(x * box_side, y * box_side, (x + 1) * box_side, (y + 1) * box_side, outline = "red", fill = "red")
-<<<<<<< HEAD
-
-    
-=======
             elif level_map[y][x] == "p1":
                 game_canvas.create_rectangle(x * box_side, y * box_side, (x + 1) * box_side, (y + 1) * box_side, outline = "blue", fill = "blue")
                 player_one = game_canvas.create_rectangle(x * box_side + box_side // 10, y * box_side, (x + 1) * box_side - box_side // 10, (y + 1) * box_side, fill = "black")
@@ -38,4 +33,5 @@ def draw(level, root, game_canvas):
     bind_p1(game_canvas, level_map, player_one, box_side)
     # movement_p2 = movement_class_p2(player_two)
     print(game_canvas.coords(player_one))
->>>>>>> 8308fd219a9954f70fe4b49880d15be70f0788f5
+    for _ in range(10):
+        shirt(root, box_side, level_map, game_canvas)
