@@ -1,4 +1,5 @@
 from tkinter import *
+from threading import *
 
 from random import *
 
@@ -11,8 +12,8 @@ def game_start():
 root = Tk()
 
 full_width, full_height = root.winfo_screenwidth(), root.winfo_screenheight()
-# root.overrideredirect(1)
 root.geometry("%dx%d+0+0" % (full_width, full_height))
+# root.wm_attributes('-fullscreen', 1)
 
 game_canvas = Canvas(width = full_height, heigh = full_height, bg = "black")
 game_canvas.pack()

@@ -1,9 +1,9 @@
 Kód:
   - mapa
-    - vykreslenie samotnej mapy
+    - vykreslenie samotnej mapy - TAKMER HOTOVO
     - vykreslenie tričiek - náhodne, aby ničomu neprekážali
   - hráči
-    - vykreslenie
+    - vykreslenie - TAKMER HOTOVO
     - pohyb
     - branie tričiek
     - zmena rýchlosti
