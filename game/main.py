@@ -1,5 +1,7 @@
 from tkinter import *
 
+from random import *
+
 from map import *
 
 

@@ -1,3 +1,5 @@
+from random import *
+
 def draw(level, root, game_canvas):
     level_file = open(level)
     level_map = level_file.readlines()
@@ -15,3 +17,5 @@ def draw(level, root, game_canvas):
                 game_canvas.create_rectangle(x * box_side, y * box_side, (x + 1) * box_side, (y + 1) * box_side, outline = "blue", fill = "blue")
             elif level_map[y][x] == "3":
                 game_canvas.create_rectangle(x * box_side, y * box_side, (x + 1) * box_side, (y + 1) * box_side, outline = "red", fill = "red")
+
+    
