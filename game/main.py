@@ -1,4 +1,5 @@
 from tkinter import *
+from threading import *
 
 from map import *
 

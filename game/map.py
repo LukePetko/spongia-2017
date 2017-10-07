@@ -1,3 +1,5 @@
+from movement import *
+
 def draw(level, root, game_canvas):
     level_file = open(level)
     level_map = level_file.readlines()
@@ -24,3 +26,7 @@ def draw(level, root, game_canvas):
             elif level_map[y][x] == "p2":
                 game_canvas.create_rectangle(x * box_side, y * box_side, (x + 1) * box_side, (y + 1) * box_side, outline = "red", fill = "red")
                 player_two = game_canvas.create_rectangle(x * box_side + box_side // 10, y * box_side, (x + 1) * box_side - box_side // 10, (y + 1) * box_side, fill = "black")
+
+    bind_p1(game_canvas, level_map, player_one, box_side)
+    # movement_p2 = movement_class_p2(player_two)
+    print(game_canvas.coords(player_one))
