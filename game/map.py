@@ -35,3 +35,4 @@ def draw(level, root, game_canvas):
     print(game_canvas.coords(player_one))
     for _ in range(10):
         shirt(root, box_side, level_map, game_canvas)
+    print(level_map)

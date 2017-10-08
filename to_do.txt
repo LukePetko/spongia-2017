@@ -1,10 +1,10 @@
 Kód:
   - mapa
     - vykreslenie samotnej mapy - TAKMER HOTOVO
-    - vykreslenie tričiek - náhodne, aby ničomu neprekážali
+    - vykreslenie tričiek - náhodne, aby ničomu neprekážali - Už sa len niekedy prekrývajú navzájom!
   - hráči
     - vykreslenie - TAKMER HOTOVO
-    - pohyb
+    - pohyb - NEJDE?? Fakt netuším prečo mizne
     - branie tričiek
     - zmena rýchlosti
   - "Domček"
