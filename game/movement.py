@@ -42,25 +42,23 @@ def run(level_map, game_canvas, player_one, player_two, box_side, pressed):
     if wait_bool_p1:
         if pressed["s"]:
             game_canvas.move(player_one, 0, 10)
-            wait_bool_p1 = False
             game_canvas.after(t, wait_p1)
             print(game_canvas.coords(player_one))
         if pressed["w"]:
             game_canvas.move(player_one, 0, -10)
             print(game_canvas.coords(player_one))
-            wait_bool_p1 = False
             game_canvas.after(t, wait_p1)
         if pressed["a"]:
             game_canvas.move(player_one, -10, 0)
             print(game_canvas.coords(player_one))
-            wait_bool_p1 = False
             game_canvas.after(t, wait_p1)
         if pressed["d"]:
             game_canvas.move(player_one, 10, 0)
             print(game_canvas.coords(player_one))
-            wait_bool_p1 = False
             print(wait_bool_p1, "- pri d")
             game_canvas.after(t, wait_p1)
+        wait_bool_p1 = False
+
     # if wait_bool_p2:
     #     if (event.keysym == "Down"):
     #         game_canvas.move(player_two, 0, 10)

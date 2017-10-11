@@ -4,7 +4,9 @@ from tkinter import *
 from movement import *
 from shirt import *
 
-def draw(level, root, game_canvas):
+
+def draw(level, root):
+    global game_canvas
     level_file = open(level)
     level_map = level_file.readlines()
 
@@ -35,6 +37,33 @@ def draw(level, root, game_canvas):
 
     bind_p1(game_canvas, level_map, player_one, player_two, box_side)
     # movement_p2 = movement_class_p2(player_two)
+
+    shirt_list = [0] * 10
+    print(shirt_list)
+
+    shirt_yellow = PhotoImage(file = "../img/tricko_yellow.gif")
+    shirt_yellow_2 = PhotoImage(file = "../img/tricko_yellow.gif")
+
+    id_1 = game_canvas.create_image(100, 100, image = shirt_yellow, anchor = NW)
+    id_2 = game_canvas.create_image(300, 300, image = shirt_yellow_2, anchor = NW)
+
+    game_canvas.move(id_1, 10, 0)
+
+    def shirt(p_box_side, p_root, p_level_map, p_game_canvas, p_shirt_yellow, p_shirt_list):
+        x_sur = randint(2 * box_side, root.winfo_screenheight() - 2 * box_side)
+        y_sur = randint(2 * box_side, root.winfo_screenheight() - 2 * box_side)
+        while level_map[y_sur // box_side][x_sur // box_side] in ["0", "2", "3", "p1", "p2", "t"] or (level_map[y_sur // box_side][x_sur // box_side + 1] in ["0", "2", "3", "p1", "p2", "t"]) or level_map[y_sur // box_side + 1][x_sur // box_side] in ["0", "2", "3", "p1", "p2", "t"] or level_map[y_sur // box_side + 1][x_sur // box_side + 1] in ["0", "2", "3", "p1", "p2", "t"]:
+            x_sur = randint(2 * box_side, root.winfo_screenheight() - 2 * box_side)
+            y_sur = randint(2 * box_side, root.winfo_screenheight() - 2 * box_side)
+        game_canvas.create_rectangle(x_sur, y_sur, x_sur + box_side, y_sur + box_side, fill = "yellow")
+        p_shirt_list[shirt_count] = game_canvas.create_image(x_sur, y_sur, image = shirt_yellow, anchor = NW)
+
+        print(shirt_list[shirt_count], x_sur, y_sur)
+        game_canvas.tag_raise(shirt_list[shirt_count])
+        level_map[y_sur // box_side][x_sur // box_side] = "t"
+
+
     print(game_canvas.coords(player_one))
-    for _ in range(10):
-        shirt(root, box_side, level_map, game_canvas)
+    for shirt_count in range(10):
+        print("kreslim")
+        shirt(box_side, root)
