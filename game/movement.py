@@ -1,29 +1,89 @@
 from threading import *
+import time
 
-def bind_p1(game_canvas, level_map, player_one, box_side):
-    movement_p1 = movement_class_p1()
-    for i in ["w", "s", "a", "d", "W", "S", "A", "D"]:
-        pass
-    game_canvas.bind("<Key>", lambda: movement_p1.start())
-    game_canvas.bind_all("<Key>", lambda event, level_map = level_map, game_canvas = game_canvas, player_one = player_one, box_side = box_side: run(event, level_map, game_canvas, player_one, box_side))
-    game_canvas.bind("<Button-1>", lambda event: print(event.x, event.y))
+def bind_p1(game_canvas, level_map, player_one, player_two, box_side):
+    global pressed
+    for char in ["w", "s", "a", "d", "W", "S", "A", "D"]:
+        game_canvas.bind("<KeyPress-%s>" % char, _pressed)
+        game_canvas.bind("<KeyRelease-%s>" % char, _released)
+        pressed[char] = False
+    print(pressed)
+    # game_canvas.bind_all("<Key>", lambda event, level_map = level_map, game_canvas = game_canvas, player_one = player_one, box_side = box_side, player_two = player_two: run(event, level_map, game_canvas, player_one, player_two, box_side))
+    run(level_map, game_canvas, player_one, player_two, box_side, pressed)
 
-def bind_p2():
-    for i in ["<Up>", "<Down>", "<Left>", "<Right>"]:
-        game_canvas.bind(i, lambda: movement_p2.start())
+def _pressed(event):
+    global pressed
+    print(event.keysym)
+    pressed[event.keysym] = True
 
-class movement_class_p1(Thread):
-    pass
-def run(event, level_map, game_canvas, player_one, box_side):
-    if (event.keysym == "S" or event.keysym == "s") and level_map[int(game_canvas.coords(player_one)[0] // box_side)][int(game_canvas.coords(player_one)[1] // box_side + 1)] != "0":
-        game_canvas.move(player_one, 0, 10)
-        print(game_canvas.coords(player_one))
-    if (event.keysym == "W" or event.keysym == "w") and level_map[int(game_canvas.coords(player_one)[0] // box_side)][int(game_canvas.coords(player_one)[1] // box_side - 1)] != "0":
-        game_canvas.move(player_one, 0, -10)
-        print(game_canvas.coords(player_one))
-    if (event.keysym == "A" or event.keysym == "a") and level_map[int(game_canvas.coords(player_one)[0] // box_side) - 1][int(game_canvas.coords(player_one)[1] // box_side)] != "0":
-        game_canvas.move(player_one, -10, 0)
-        print(game_canvas.coords(player_one))
-    if (event.keysym == "D" or event.keysym == "d") and level_map[int(game_canvas.coords(player_one)[0] // box_side) + 1][int(game_canvas.coords(player_one)[1] // box_side + 1)] != "0":
-        game_canvas.move(player_one, 10, 0)
-        print(game_canvas.coords(player_one))
+def _released(event):
+    global pressed
+    pressed[event.keysym] = False
+
+def wait(wait_bool_p1):
+    wait_bool_p1 = True
+    print(wait_bool, "- wait function")
+
+def wait_p1():
+    global wait_bool_p1
+    wait_bool_p1 = True
+
+def wait_p2():
+    global wait_bool_p2
+    wait_bool_p2 = True
+
+
+def run(level_map, game_canvas, player_one, player_two, box_side, pressed):
+    global wait_bool_p1, wait_bool_p2, t
+    game_canvas.tag_raise(player_one)
+    game_canvas.tag_raise(player_two)
+    # print(event.keysym)
+    # print(wait_bool_p1, "- pred if-mi")
+    if wait_bool_p1:
+        if pressed["s"]:
+            game_canvas.move(player_one, 0, 10)
+            wait_bool_p1 = False
+            game_canvas.after(t, wait_p1)
+            print(game_canvas.coords(player_one))
+        if pressed["w"]:
+            game_canvas.move(player_one, 0, -10)
+            print(game_canvas.coords(player_one))
+            wait_bool_p1 = False
+            game_canvas.after(t, wait_p1)
+        if pressed["a"]:
+            game_canvas.move(player_one, -10, 0)
+            print(game_canvas.coords(player_one))
+            wait_bool_p1 = False
+            game_canvas.after(t, wait_p1)
+        if pressed["d"]:
+            game_canvas.move(player_one, 10, 0)
+            print(game_canvas.coords(player_one))
+            wait_bool_p1 = False
+            print(wait_bool_p1, "- pri d")
+            game_canvas.after(t, wait_p1)
+    # if wait_bool_p2:
+    #     if (event.keysym == "Down"):
+    #         game_canvas.move(player_two, 0, 10)
+    #         print(game_canvas.coords(player_two))
+    #         wait_bool_p2 = False
+    #         game_canvas.after(t, wait_p2)
+    #     if (event.keysym == "Up"):
+    #         game_canvas.move(player_two, 0, -10)
+    #         print(game_canvas.coords(player_two))
+    #         wait_bool_p2 = False
+    #         game_canvas.after(t, wait_p2)
+    #     if (event.keysym == "Left"):
+    #         game_canvas.move(player_two, -10, 0)
+    #         print(game_canvas.coords(player_two))
+    #         wait_bool_p2 = False
+    #         game_canvas.after(t, wait_p2)
+    #     if (event.keysym == "Right"):
+    #         game_canvas.move(player_two, 10, 0)
+    #         print(game_canvas.coords(player_two))
+    #         wait_bool_p2 = False
+    #         game_canvas.after(t, wait_p2)
+    game_canvas.after(10, lambda: run(level_map, game_canvas, player_one, player_two, box_side, pressed))
+wait_bool_p1 = True
+wait_bool_p2 = True
+t = 100
+pressed = {}
