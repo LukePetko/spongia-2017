@@ -126,7 +126,7 @@ pressed = {}
 #==========================================================================================
 def shirt_new():
     global box_side, root, level_map, game_start, shirt_yellow, shirt_list, povolenie, neviem, body_p1
-    if povolenie == 1:
+    if povolenie == 1: #toto je asi zatial zbytocne, chcel som aby si nemohol drzat "j" a zbierat tricka :((((
         #print(shirt_positions[neviem].id)
         #print('po spusteni shirt_new number ---> ', shirt_positions[neviem].number)
         game_canvas.delete(shirt_positions[neviem].id)
