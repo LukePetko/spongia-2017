@@ -1,14 +1,14 @@
 Kód:
   - mapa
-    - vykreslenie samotnej mapy - TAKMER HOTOVO
-    - vykreslenie tričiek - náhodne, aby ničomu neprekážali - Už sa len niekedy prekrývajú navzájom!
-  - hráči
-    - vykreslenie - TAKMER HOTOVO
-    - pohyb - NEJDE?? Fakt netuším prečo mizne
-    - branie tričiek
-    - zmena rýchlosti
+    - vykreslenie samotnej mapy - UŽ LEN GRAFIKA
+    - vykreslenie tričiek - náhodne, aby ničomu neprekážali - HOTOVO
+  - hráči -UŽ LEN GRAFIKA
+    - vykreslenie - UŽ LEN GRAFIKA
+    - pohyb - HOTOVO
+    - branie tričiek - HOTOVO
+    - zmena rýchlosti - HOTOVO
   - "Domček"
-    - dávanie tričiek dole
+    - dávanie tričiek dole - HOTOVO
   - časovač
   - tvorba postáv
     - výber vecí (vlasy, nohavice, pohlavie)
