@@ -221,7 +221,7 @@ def shirt_init():
         x_sur = randint(2 * box_side, root.winfo_screenheight() - 2 * box_side)
         y_sur = randint(2 * box_side, root.winfo_screenheight() - 2 * box_side)
 
-    shirt_random = choice([shirt_yellow, shirt_blue, shirt_red])
+    shirt_random = choice([shirt_yellow, shirt_blue, shirt_red, shirt_white])
 
     shirt_list[shirt_count] = game_canvas.create_image(x_sur, y_sur, image = shirt_random, anchor = NW, tags = "shirts")
 
@@ -240,7 +240,7 @@ def shirt_init():
 
 
 def draw(level, root):
-    global game_canvas, box_side, level_map, shirt_yellow, shirt_red, shirt_blue, shirt_list, shirt_count, player_one, player_two
+    global game_canvas, box_side, level_map, shirt_yellow, shirt_red, shirt_blue, shirt_list, shirt_count, player_one, player_two, shirt_white
     level_file = open(level)
     print(level_file)
     level_map = level_file.readlines()
@@ -274,10 +274,12 @@ def draw(level, root):
     shirt_yellow_ = Image.open("../img/tricko_yellow.gif").resize((int(0.8 * box_side), int(0.8 * box_side)), Image.ANTIALIAS)
     shirt_blue_ = Image.open("../img/tricko_blue.gif").resize((int(1.0 * box_side), int(1.0 * box_side)), Image.ANTIALIAS)
     shirt_red_ = Image.open("../img/tricko_red.gif").resize((int(1.2 * box_side), int(1.2 * box_side)), Image.ANTIALIAS)
+    shirt_white_ = Image.open("../img/tricko_white.gif").resize((int(1.4 * box_side), int(1.4 * box_side)), Image.ANTIALIAS)
 
     shirt_yellow = ImageTk.PhotoImage(shirt_yellow_)
     shirt_blue = ImageTk.PhotoImage(shirt_blue_)
     shirt_red = ImageTk.PhotoImage(shirt_red_)
+    shirt_white = ImageTk.PhotoImage(shirt_white_)
 
     # shirt_yellow = PhotoImage(file = "../img/tricko_yellow.gif")
     # shirt_blue = PhotoImage(file = "../img/tricko_blue.gif")
@@ -290,7 +292,7 @@ def draw(level, root):
         print(shirt_positions[shirt_count].id)
         print(shirt_list)
 def game_start():
-    draw("levels/level_1.txt", root)
+    draw("levels/level_3.txt", root)
 
 root = Tk()
 full_width, full_height = root.winfo_screenwidth(), root.winfo_screenheight()
