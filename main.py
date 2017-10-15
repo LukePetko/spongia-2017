@@ -39,7 +39,7 @@ def wait_p2():
     wait_bool_p2 = True
 
 povolenie = 1
-neviem = 0
+neviem = 0 # to iste ako shirt_count iba pre nove tricka
 body_p1 = 0
 v1_p1 = 0
 v2_p1 = 0
@@ -56,7 +56,7 @@ def movement():
             game_canvas.move(player_one, 0, 4)
             wait_bool_p1 = False
             game_canvas.after(t, wait_p1)
-            print(game_canvas.coords(player_one))
+            #print(game_canvas.coords(player_one))
             povolenie = 1
         if pressed["w"] and level_map[int(game_canvas.coords(player_one)[1] - 4) // box_side][int(game_canvas.coords(player_one)[2]) // box_side] in ["1", "2", "t", "p1"] and level_map[int(game_canvas.coords(player_one)[1] - 4) // box_side][int(game_canvas.coords(player_one)[0]) // box_side] in ["1", "2", "t", "p1"]:
             game_canvas.move(player_one, 0, -4)
@@ -101,13 +101,14 @@ def movement():
                             neviem = i
                             shirt_new()
                             povolenie = 0
-                            v1_p1 = 1
+                            v1_p1 = 1 # oblecie si velkost 1
         if pressed["k"]:
-            body_p1+=(v1_p1 + v2_p1 + v3_p1)
-            print("ulozene :)))")
-            v1_p1 = 0
-            v2_p1 = 0
-            v3_p1 = 0
+            if level_map[int(game_canvas.coords(player_one)[0]) // box_side][int(game_canvas.coords(player_one)[3]) // box_side] == "3":
+                body_p1+=(v1_p1 + v2_p1 + v3_p1)
+                print("ulozene :)))")
+                v1_p1 = 0
+                v2_p1 = 0
+                v3_p1 = 0
         if pressed["l"]:
             print("body hrac 1 ----->", body_p1)
 
