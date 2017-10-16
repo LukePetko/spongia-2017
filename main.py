@@ -54,29 +54,29 @@ def movement():
     global wait_bool_p1, wait_bool_p2, t, level_map, game_canvas, player_one, player_two, box_side, pressed, povolenie, neviem, body_p1, v1_p1, v2_p1, v3_p1, v4_p1, body_p2, v1_p2, v2_p2, v3_p2, v4_p2
     game_canvas.tag_raise(player_one)
     game_canvas.tag_raise(player_two)
-    # print(level_map[int(game_canvas.coords(player_one)[1]) // box_side][int(game_canvas.coords(player_one)[2]) // box_side])
-    # print(int(game_canvas.coords(player_one)[2]) // box_side)
+    # print(level_map[int(game_canvas.coords(player_one)[1]) // box_side][int(game_canvas.coords(player_one)[0] + box_side) // box_side])
+    # print(int(game_canvas.coords(player_one)[0] + box_side) // box_side)
     # print(int(game_canvas.coords(player_one)[1]) // box_side)
     if wait_bool_p1:
-        if pressed["s"] and level_map[int(game_canvas.coords(player_one)[3] + 4) // box_side][int(game_canvas.coords(player_one)[2]) // box_side] in ["1", "2", "t", "p1"] and level_map[int(game_canvas.coords(player_one)[3] + 4) // box_side][int(game_canvas.coords(player_one)[0]) // box_side] in ["1", "2", "t", "p1"]:
+        if pressed["s"] and level_map[int(game_canvas.coords(player_one)[1] + 4 + 1.92 * box_side) // box_side][int(game_canvas.coords(player_one)[0] + box_side) // box_side] in ["1", "2", "t", "p1"] and level_map[int(game_canvas.coords(player_one)[1] + 1.92 * box_side + 4) // box_side][int(game_canvas.coords(player_one)[0]) // box_side] in ["1", "2", "t", "p1"]:
             game_canvas.move(player_one, 0, 4)
             wait_bool_p1 = False
             game_canvas.after(t, wait_p1)
             #print(game_canvas.coords(player_one))
             povolenie = 1
-        if pressed["w"] and level_map[int(game_canvas.coords(player_one)[1] - 4) // box_side][int(game_canvas.coords(player_one)[2]) // box_side] in ["1", "2", "t", "p1"] and level_map[int(game_canvas.coords(player_one)[1] - 4) // box_side][int(game_canvas.coords(player_one)[0]) // box_side] in ["1", "2", "t", "p1"]:
+        if pressed["w"] and level_map[int(game_canvas.coords(player_one)[1] - 4) // box_side][int(game_canvas.coords(player_one)[0] + box_side) // box_side] in ["1", "2", "t", "p1"] and level_map[int(game_canvas.coords(player_one)[1] - 4) // box_side][int(game_canvas.coords(player_one)[0]) // box_side] in ["1", "2", "t", "p1"]:
             game_canvas.move(player_one, 0, -4)
             wait_bool_p1 = False
             # print(game_canvas.coords(player_one))
             game_canvas.after(t, wait_p1)
             povolenie = 1
-        if pressed["a"] and level_map[int(game_canvas.coords(player_one)[1]) // box_side][int(game_canvas.coords(player_one)[0] - 4) // box_side] in ["1", "2", "t", "p1"] and level_map[int(game_canvas.coords(player_one)[3]) // box_side][int(game_canvas.coords(player_one)[0] - 4) // box_side] in ["1", "2", "t", "p1"]:
+        if pressed["a"] and level_map[int(game_canvas.coords(player_one)[1]) // box_side][int(game_canvas.coords(player_one)[0] - 4) // box_side] in ["1", "2", "t", "p1"] and level_map[int(game_canvas.coords(player_one)[1] + 1.92 * box_side) // box_side][int(game_canvas.coords(player_one)[0] - 4) // box_side] in ["1", "2", "t", "p1"]:
             game_canvas.move(player_one, -4, 0)
             wait_bool_p1 = False
             # print(game_canvas.coords(player_one))
             game_canvas.after(t, wait_p1)
             povolenie = 1
-        if pressed["d"] and level_map[int(game_canvas.coords(player_one)[1]) // box_side][int(game_canvas.coords(player_one)[2] + 4) // box_side] in ["1", "2", "t", "p1"] and level_map[int(game_canvas.coords(player_one)[3]) // box_side][int(game_canvas.coords(player_one)[2] + 4) // box_side] in ["1", "2", "t", "p1"]:
+        if pressed["d"] and level_map[int(game_canvas.coords(player_one)[1]) // box_side][int(game_canvas.coords(player_one)[0] + box_side + 4) // box_side] in ["1", "2", "t", "p1"] and level_map[int(game_canvas.coords(player_one)[1] + 1.92 * box_side) // box_side][int(game_canvas.coords(player_one)[0] + box_side + 4) // box_side] in ["1", "2", "t", "p1"]:
             game_canvas.move(player_one, 4, 0)
             wait_bool_p1 = False
             # print(game_canvas.coords(player_one))
@@ -86,7 +86,7 @@ def movement():
             for i in range(16):
                 if shirt_positions[i].color == "pyimage4": #podla farby vyberie velkost okolo tricka ktoru pripocita..
                     velkost = 1.4 #zlte tricko
-                    if (shirt_positions[i].x_sur < int(game_canvas.coords(player_one)[0]) and shirt_positions[i].x_sur + int(velkost * box_side) > int(game_canvas.coords(player_one)[0]) and shirt_positions[i].y_sur < int(game_canvas.coords(player_one)[1]) and shirt_positions[i].y_sur + int(velkost * box_side) > int(game_canvas.coords(player_one)[1])) or (shirt_positions[i].x_sur < int(game_canvas.coords(player_one)[2]) and shirt_positions[i].x_sur + int(velkost * box_side) > int(game_canvas.coords(player_one)[2]) and shirt_positions[i].y_sur < int(game_canvas.coords(player_one)[1]) and shirt_positions[i].y_sur + int(velkost * box_side) > int(game_canvas.coords(player_one)[1])) or (shirt_positions[i].x_sur < int(game_canvas.coords(player_one)[0]) and shirt_positions[i].x_sur + int(velkost * box_side) > int(game_canvas.coords(player_one)[0]) and shirt_positions[i].y_sur < int(game_canvas.coords(player_one)[3]) and shirt_positions[i].y_sur + int(velkost * box_side) > int(game_canvas.coords(player_one)[3])) or (shirt_positions[i].x_sur < int(game_canvas.coords(player_one)[2]) and shirt_positions[i].x_sur + int(velkost * box_side) > int(game_canvas.coords(player_one)[2]) and shirt_positions[i].y_sur < int(game_canvas.coords(player_one)[3]) and shirt_positions[i].y_sur + int(velkost * box_side) > int(game_canvas.coords(player_one)[3])):
+                    if (shirt_positions[i].x_sur < int(game_canvas.coords(player_one)[0]) and shirt_positions[i].x_sur + int(velkost * box_side) > int(game_canvas.coords(player_one)[0]) and shirt_positions[i].y_sur < int(game_canvas.coords(player_one)[1]) and shirt_positions[i].y_sur + int(velkost * box_side) > int(game_canvas.coords(player_one)[1])) or (shirt_positions[i].x_sur < int(game_canvas.coords(player_one)[0] + box_side) and shirt_positions[i].x_sur + int(velkost * box_side) > int(game_canvas.coords(player_one)[0] + box_side) and shirt_positions[i].y_sur < int(game_canvas.coords(player_one)[1]) and shirt_positions[i].y_sur + int(velkost * box_side) > int(game_canvas.coords(player_one)[1])) or (shirt_positions[i].x_sur < int(game_canvas.coords(player_one)[0]) and shirt_positions[i].x_sur + int(velkost * box_side) > int(game_canvas.coords(player_one)[0]) and shirt_positions[i].y_sur < int(game_canvas.coords(player_one)[1] + 1.92 * box_side) and shirt_positions[i].y_sur + int(velkost * box_side) > int(game_canvas.coords(player_one)[1] + 1.92 * box_side)) or (shirt_positions[i].x_sur < int(game_canvas.coords(player_one)[0] + box_side) and shirt_positions[i].x_sur + int(velkost * box_side) > int(game_canvas.coords(player_one)[0] + box_side) and shirt_positions[i].y_sur < int(game_canvas.coords(player_one)[1] + 1.92 * box_side) and shirt_positions[i].y_sur + int(velkost * box_side) > int(game_canvas.coords(player_one)[1] + 1.92 * box_side)):
                         if v1_p1 == 0 and v2_p1 == 0 and v3_p1 == 0 and v4_p1 == 0:
                             neviem = i
                             shirt_new()
@@ -94,7 +94,7 @@ def movement():
                             v4_p1 = 1 # oblecie si velkost 4
                 if shirt_positions[i].color == "pyimage3": #podla farby vyberie velkost okolo tricka ktoru pripocita..
                     velkost = 1.2 #cervene tricko
-                    if (shirt_positions[i].x_sur < int(game_canvas.coords(player_one)[0]) and shirt_positions[i].x_sur + int(velkost * box_side) > int(game_canvas.coords(player_one)[0]) and shirt_positions[i].y_sur < int(game_canvas.coords(player_one)[1]) and shirt_positions[i].y_sur + int(velkost * box_side) > int(game_canvas.coords(player_one)[1])) or (shirt_positions[i].x_sur < int(game_canvas.coords(player_one)[2]) and shirt_positions[i].x_sur + int(velkost * box_side) > int(game_canvas.coords(player_one)[2]) and shirt_positions[i].y_sur < int(game_canvas.coords(player_one)[1]) and shirt_positions[i].y_sur + int(velkost * box_side) > int(game_canvas.coords(player_one)[1])) or (shirt_positions[i].x_sur < int(game_canvas.coords(player_one)[0]) and shirt_positions[i].x_sur + int(velkost * box_side) > int(game_canvas.coords(player_one)[0]) and shirt_positions[i].y_sur < int(game_canvas.coords(player_one)[3]) and shirt_positions[i].y_sur + int(velkost * box_side) > int(game_canvas.coords(player_one)[3])) or (shirt_positions[i].x_sur < int(game_canvas.coords(player_one)[2]) and shirt_positions[i].x_sur + int(velkost * box_side) > int(game_canvas.coords(player_one)[2]) and shirt_positions[i].y_sur < int(game_canvas.coords(player_one)[3]) and shirt_positions[i].y_sur + int(velkost * box_side) > int(game_canvas.coords(player_one)[3])):
+                    if (shirt_positions[i].x_sur < int(game_canvas.coords(player_one)[0]) and shirt_positions[i].x_sur + int(velkost * box_side) > int(game_canvas.coords(player_one)[0]) and shirt_positions[i].y_sur < int(game_canvas.coords(player_one)[1]) and shirt_positions[i].y_sur + int(velkost * box_side) > int(game_canvas.coords(player_one)[1])) or (shirt_positions[i].x_sur < int(game_canvas.coords(player_one)[0] + box_side) and shirt_positions[i].x_sur + int(velkost * box_side) > int(game_canvas.coords(player_one)[0] + box_side) and shirt_positions[i].y_sur < int(game_canvas.coords(player_one)[1]) and shirt_positions[i].y_sur + int(velkost * box_side) > int(game_canvas.coords(player_one)[1])) or (shirt_positions[i].x_sur < int(game_canvas.coords(player_one)[0]) and shirt_positions[i].x_sur + int(velkost * box_side) > int(game_canvas.coords(player_one)[0]) and shirt_positions[i].y_sur < int(game_canvas.coords(player_one)[1] + 1.92 * box_side) and shirt_positions[i].y_sur + int(velkost * box_side) > int(game_canvas.coords(player_one)[1] + 1.92 * box_side)) or (shirt_positions[i].x_sur < int(game_canvas.coords(player_one)[0] + box_side) and shirt_positions[i].x_sur + int(velkost * box_side) > int(game_canvas.coords(player_one)[0] + box_side) and shirt_positions[i].y_sur < int(game_canvas.coords(player_one)[1] + 1.92 * box_side) and shirt_positions[i].y_sur + int(velkost * box_side) > int(game_canvas.coords(player_one)[1] + 1.92 * box_side)):
                         if v3_p1 == 0 and v4_p1 == 0:
                             neviem = i
                             shirt_new()
@@ -102,7 +102,7 @@ def movement():
                             v3_p1 = 1 #oblecie si velkost 3
                 if shirt_positions[i].color == "pyimage2": #podla farby vyberie velkost okolo tricka ktoru pripocita..
                     velkost = 1.0 # modre tricko
-                    if (shirt_positions[i].x_sur < int(game_canvas.coords(player_one)[0]) and shirt_positions[i].x_sur + int(velkost * box_side) > int(game_canvas.coords(player_one)[0]) and shirt_positions[i].y_sur < int(game_canvas.coords(player_one)[1]) and shirt_positions[i].y_sur + int(velkost * box_side) > int(game_canvas.coords(player_one)[1])) or (shirt_positions[i].x_sur < int(game_canvas.coords(player_one)[2]) and shirt_positions[i].x_sur + int(velkost * box_side) > int(game_canvas.coords(player_one)[2]) and shirt_positions[i].y_sur < int(game_canvas.coords(player_one)[1]) and shirt_positions[i].y_sur + int(velkost * box_side) > int(game_canvas.coords(player_one)[1])) or (shirt_positions[i].x_sur < int(game_canvas.coords(player_one)[0]) and shirt_positions[i].x_sur + int(velkost * box_side) > int(game_canvas.coords(player_one)[0]) and shirt_positions[i].y_sur < int(game_canvas.coords(player_one)[3]) and shirt_positions[i].y_sur + int(velkost * box_side) > int(game_canvas.coords(player_one)[3])) or (shirt_positions[i].x_sur < int(game_canvas.coords(player_one)[2]) and shirt_positions[i].x_sur + int(velkost * box_side) > int(game_canvas.coords(player_one)[2]) and shirt_positions[i].y_sur < int(game_canvas.coords(player_one)[3]) and shirt_positions[i].y_sur + int(velkost * box_side) > int(game_canvas.coords(player_one)[3])):
+                    if (shirt_positions[i].x_sur < int(game_canvas.coords(player_one)[0]) and shirt_positions[i].x_sur + int(velkost * box_side) > int(game_canvas.coords(player_one)[0]) and shirt_positions[i].y_sur < int(game_canvas.coords(player_one)[1]) and shirt_positions[i].y_sur + int(velkost * box_side) > int(game_canvas.coords(player_one)[1])) or (shirt_positions[i].x_sur < int(game_canvas.coords(player_one)[0] + box_side) and shirt_positions[i].x_sur + int(velkost * box_side) > int(game_canvas.coords(player_one)[0] + box_side) and shirt_positions[i].y_sur < int(game_canvas.coords(player_one)[1]) and shirt_positions[i].y_sur + int(velkost * box_side) > int(game_canvas.coords(player_one)[1])) or (shirt_positions[i].x_sur < int(game_canvas.coords(player_one)[0]) and shirt_positions[i].x_sur + int(velkost * box_side) > int(game_canvas.coords(player_one)[0]) and shirt_positions[i].y_sur < int(game_canvas.coords(player_one)[1] + 1.92 * box_side) and shirt_positions[i].y_sur + int(velkost * box_side) > int(game_canvas.coords(player_one)[1] + 1.92 * box_side)) or (shirt_positions[i].x_sur < int(game_canvas.coords(player_one)[0] + box_side) and shirt_positions[i].x_sur + int(velkost * box_side) > int(game_canvas.coords(player_one)[0] + box_side) and shirt_positions[i].y_sur < int(game_canvas.coords(player_one)[1] + 1.92 * box_side) and shirt_positions[i].y_sur + int(velkost * box_side) > int(game_canvas.coords(player_one)[1] + 1.92 * box_side)):
                         if v2_p1 == 0 and v3_p1 == 0 and v4_p1 == 0:
                             neviem = i
                             shirt_new()
@@ -110,14 +110,14 @@ def movement():
                             v2_p1 = 1 #oblecie si velkost 2
                 if shirt_positions[i].color == "pyimage1": #podla farby vyberie velkost okolo tricka ktoru pripocita..
                     velkost = 0.8 #zlte tricko
-                    if (shirt_positions[i].x_sur < int(game_canvas.coords(player_one)[0]) and shirt_positions[i].x_sur + int(velkost * box_side) > int(game_canvas.coords(player_one)[0]) and shirt_positions[i].y_sur < int(game_canvas.coords(player_one)[1]) and shirt_positions[i].y_sur + int(velkost * box_side) > int(game_canvas.coords(player_one)[1])) or (shirt_positions[i].x_sur < int(game_canvas.coords(player_one)[2]) and shirt_positions[i].x_sur + int(velkost * box_side) > int(game_canvas.coords(player_one)[2]) and shirt_positions[i].y_sur < int(game_canvas.coords(player_one)[1]) and shirt_positions[i].y_sur + int(velkost * box_side) > int(game_canvas.coords(player_one)[1])) or (shirt_positions[i].x_sur < int(game_canvas.coords(player_one)[0]) and shirt_positions[i].x_sur + int(velkost * box_side) > int(game_canvas.coords(player_one)[0]) and shirt_positions[i].y_sur < int(game_canvas.coords(player_one)[3]) and shirt_positions[i].y_sur + int(velkost * box_side) > int(game_canvas.coords(player_one)[3])) or (shirt_positions[i].x_sur < int(game_canvas.coords(player_one)[2]) and shirt_positions[i].x_sur + int(velkost * box_side) > int(game_canvas.coords(player_one)[2]) and shirt_positions[i].y_sur < int(game_canvas.coords(player_one)[3]) and shirt_positions[i].y_sur + int(velkost * box_side) > int(game_canvas.coords(player_one)[3])):
+                    if (shirt_positions[i].x_sur < int(game_canvas.coords(player_one)[0]) and shirt_positions[i].x_sur + int(velkost * box_side) > int(game_canvas.coords(player_one)[0]) and shirt_positions[i].y_sur < int(game_canvas.coords(player_one)[1]) and shirt_positions[i].y_sur + int(velkost * box_side) > int(game_canvas.coords(player_one)[1])) or (shirt_positions[i].x_sur < int(game_canvas.coords(player_one)[0] + box_side) and shirt_positions[i].x_sur + int(velkost * box_side) > int(game_canvas.coords(player_one)[0] + box_side) and shirt_positions[i].y_sur < int(game_canvas.coords(player_one)[1]) and shirt_positions[i].y_sur + int(velkost * box_side) > int(game_canvas.coords(player_one)[1])) or (shirt_positions[i].x_sur < int(game_canvas.coords(player_one)[0]) and shirt_positions[i].x_sur + int(velkost * box_side) > int(game_canvas.coords(player_one)[0]) and shirt_positions[i].y_sur < int(game_canvas.coords(player_one)[1] + 1.92 * box_side) and shirt_positions[i].y_sur + int(velkost * box_side) > int(game_canvas.coords(player_one)[1] + 1.92 * box_side)) or (shirt_positions[i].x_sur < int(game_canvas.coords(player_one)[0] + box_side) and shirt_positions[i].x_sur + int(velkost * box_side) > int(game_canvas.coords(player_one)[0] + box_side) and shirt_positions[i].y_sur < int(game_canvas.coords(player_one)[1] + 1.92 * box_side) and shirt_positions[i].y_sur + int(velkost * box_side) > int(game_canvas.coords(player_one)[1] + 1.92 * box_side)):
                         if v1_p1 == 0 and v2_p1 == 0 and v3_p1 == 0 and v4_p1 == 0:
                             neviem = i
                             shirt_new()
                             povolenie = 0
                             v1_p1 = 1 # oblecie si velkost 1
 
-            if level_map[int(game_canvas.coords(player_one)[0]) // box_side][int(game_canvas.coords(player_one)[3]) // box_side] == "3":
+            if level_map[int(game_canvas.coords(player_one)[0]) // box_side][int(game_canvas.coords(player_one)[1] + 1.92 * box_side) // box_side] == "3":
                 body_p1+=(v1_p1 + v2_p1 + v3_p1 + v4_p1)
                 print("ulozene hrac 1   :)))")
                 v1_p1 = 0
@@ -262,11 +262,25 @@ def shirt_init():
 
 
 def draw(level, root):
-    global game_canvas, box_side, level_map, shirt_yellow, shirt_red, shirt_blue, shirt_list, shirt_count, player_one, player_two, shirt_white
+    global game_canvas, box_side, level_map, shirt_yellow, shirt_red, shirt_blue, shirt_list, shirt_count, player_one, player_two, shirt_white, floor, character_1
     level_file = open(level)
     print(level_file)
     level_map = level_file.readlines()
     box_side = root.winfo_screenheight() // len(level_map[0].strip().split(" "))
+
+    shirt_yellow_ = Image.open("img/tricko_yellow.gif").resize((int(0.8 * box_side), int(0.8 * box_side)), Image.ANTIALIAS)
+    shirt_blue_ = Image.open("img/tricko_blue.gif").resize((int(1.0 * box_side), int(1.0 * box_side)), Image.ANTIALIAS)
+    shirt_red_ = Image.open("img/tricko_red.gif").resize((int(1.2 * box_side), int(1.2 * box_side)), Image.ANTIALIAS)
+    shirt_white_ = Image.open("img/tricko_white.gif").resize((int(1.4 * box_side), int(1.4 * box_side)), Image.ANTIALIAS)
+    floor_ = Image.open("img/podlaha.gif").resize((int(1 * box_side), int(1 * box_side)), Image.ANTIALIAS)
+    character_1_ = Image.open("img/postava_1.gif").resize((int(1 * box_side), int(1.84 * box_side)), Image.ANTIALIAS)
+
+    shirt_yellow = ImageTk.PhotoImage(shirt_yellow_)
+    shirt_blue = ImageTk.PhotoImage(shirt_blue_)
+    shirt_red = ImageTk.PhotoImage(shirt_red_)
+    shirt_white = ImageTk.PhotoImage(shirt_white_)
+    floor = ImageTk.PhotoImage(floor_)
+    character_1 = ImageTk.PhotoImage(character_1_)
 
 
     for y in range(len(level_map)):
@@ -275,14 +289,18 @@ def draw(level, root):
             if level_map[y][x] == "0":
                 game_canvas.create_rectangle(x * box_side, y * box_side, (x + 1) * box_side, (y + 1) * box_side, fill = "black")
             elif level_map[y][x] == "1":
-                game_canvas.create_rectangle(x * box_side, y * box_side, (x + 1) * box_side, (y + 1) * box_side, outline = "white", fill = "white")
+                fl = game_canvas.create_image(x * box_side, y * box_side, image = floor, anchor = NW)
+                game_canvas.tag_raise(fl)
+                # game_canvas.create_rectangle(x * box_side, y * box_side, (x + 1) * box_side, (y + 1) * box_side, outline = "white", fill = "white")
             elif level_map[y][x] == "2":
                 game_canvas.create_rectangle(x * box_side, y * box_side, (x + 1) * box_side, (y + 1) * box_side, outline = "blue", fill = "blue")
             elif level_map[y][x] == "3":
                 game_canvas.create_rectangle(x * box_side, y * box_side, (x + 1) * box_side, (y + 1) * box_side, outline = "red", fill = "red")
             elif level_map[y][x] == "p1":
                 game_canvas.create_rectangle(x * box_side, y * box_side, (x + 1) * box_side, (y + 1) * box_side, outline = "blue", fill = "blue")
-                player_one = game_canvas.create_rectangle(x * box_side + box_side // 10, y * box_side, (x + 1) * box_side - box_side // 10, (y + 1) * box_side, fill = "black", outline = "blue")
+                # player_one = game_canvas.create_rectangle(x * box_side + box_side // 10, y * box_side, (x + 1) * box_side - box_side // 10, (y + 1) * box_side, fill = "black", outline = "blue")
+                player_one = game_canvas.create_image(x * box_side, int(y * box_side + box_side / 4), image = character_1, anchor = NW)
+                print(game_canvas.coords(player_one))
             elif level_map[y][x] == "p2":
                 game_canvas.create_rectangle(x * box_side, y * box_side, (x + 1) * box_side, (y + 1) * box_side, outline = "red", fill = "red")
                 player_two = game_canvas.create_rectangle(x * box_side + box_side // 10, y * box_side, (x + 1) * box_side - box_side // 10, (y + 1) * box_side, fill = "black", outline = "red")
@@ -292,16 +310,6 @@ def draw(level, root):
 
     shirt_list = [0] * 16
     print(shirt_list)
-
-    shirt_yellow_ = Image.open("../img/tricko_yellow.gif").resize((int(0.8 * box_side), int(0.8 * box_side)), Image.ANTIALIAS)
-    shirt_blue_ = Image.open("../img/tricko_blue.gif").resize((int(1.0 * box_side), int(1.0 * box_side)), Image.ANTIALIAS)
-    shirt_red_ = Image.open("../img/tricko_red.gif").resize((int(1.2 * box_side), int(1.2 * box_side)), Image.ANTIALIAS)
-    shirt_white_ = Image.open("../img/tricko_white.gif").resize((int(1.4 * box_side), int(1.4 * box_side)), Image.ANTIALIAS)
-
-    shirt_yellow = ImageTk.PhotoImage(shirt_yellow_)
-    shirt_blue = ImageTk.PhotoImage(shirt_blue_)
-    shirt_red = ImageTk.PhotoImage(shirt_red_)
-    shirt_white = ImageTk.PhotoImage(shirt_white_)
 
     # shirt_yellow = PhotoImage(file = "../img/tricko_yellow.gif")
     # shirt_blue = PhotoImage(file = "../img/tricko_blue.gif")
@@ -314,7 +322,7 @@ def draw(level, root):
         print(shirt_positions[shirt_count].id)
         print(shirt_list)
 def game_start():
-    draw("levels/level_3.txt", root)
+    draw("game/levels/level_3.txt", root)
 
 root = Tk()
 full_width, full_height = root.winfo_screenwidth(), root.winfo_screenheight()
