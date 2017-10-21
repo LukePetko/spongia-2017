@@ -3,7 +3,6 @@ from threading import *
 from random import *
 from PIL import Image, ImageTk
 from simpleaudio import *
-import sys # sys.exit()
 
 from music import *
 
@@ -12,7 +11,7 @@ class Shirt:
 
 def bind_p1():
     global pressed, game_canvas, level_map, player_one, player_two, box_side
-    for char in ["w", "s", "a", "d", "W", "S", "A", "D", "Down", "Up", "Left", "Right","f", "g", "k", "l"]:
+    for char in ["w", "s", "a", "d", "W", "S", "A", "D", "Down", "Up", "Left", "Right","f", "k", "Escape"]:
         pressed[char] = False
     #     print(char, pressed[char])
     # print(pressed)
@@ -215,6 +214,8 @@ def movement():
                 v3_p2 = 0
                 v4_p2 = 0
                 game_canvas.itemconfig(player_two, image = character_2)
+    if pressed["Escape"]:
+        quit()
     if not stop_bool:
         game_canvas.after(10, movement)
 
@@ -279,7 +280,7 @@ def shirt_init():
 
 
 def draw(level, root):
-    global game_canvas, full_height, box_side, level_map, shirt_yellow, shirt_red, shirt_blue, shirt_list, shirt_count, player_one, player_two, shirt_white, floor, character_1, character_2, p1_tricko1, p1_tricko2, p1_tricko3, p1_tricko4, p2_tricko1, p2_tricko2, p2_tricko3, p2_tricko4, p2_skore_desiatky, p2_skore_jednotky, p1_skore_desiatky, p1_skore_jednotky, cisla_skore
+    global game_canvas, full_height, box_side, level_map, shirt_yellow, shirt_red, shirt_blue, shirt_list, shirt_count, player_one, player_two, shirt_white, floor, character_1, character_2, p1_tricko1, p1_tricko2, p1_tricko3, p1_tricko4, p2_tricko1, p2_tricko2, p2_tricko3, p2_tricko4, p2_skore_desiatky, p2_skore_jednotky, p1_skore_desiatky, p1_skore_jednotky, cisla_skore, wall
     level_file = open(level)
     # print(level_file)
     level_map = level_file.readlines()
@@ -290,6 +291,7 @@ def draw(level, root):
     shirt_red_ = Image.open("img/tricko_red.gif").resize((int(1.2 * box_side), int(1.2 * box_side)), Image.ANTIALIAS)
     shirt_white_ = Image.open("img/tricko_white.gif").resize((int(1.4 * box_side), int(1.4 * box_side)), Image.ANTIALIAS)
     floor_ = Image.open("img/podlaha.gif").resize((int(1 * box_side), int(1 * box_side)), Image.ANTIALIAS)
+    wall_ = Image.open("img/stena.gif").resize((int(1 * box_side), int(1 * box_side)), Image.ANTIALIAS)
     character_1_ = Image.open("img/postava_1.gif").resize((int(1 * box_side), int(1.83 * box_side)), Image.ANTIALIAS)
     character_2_ = Image.open("img/postava_2.gif").resize((int(1 * box_side), int(1.83 * box_side)), Image.ANTIALIAS)
 
@@ -308,6 +310,7 @@ def draw(level, root):
     shirt_red = ImageTk.PhotoImage(shirt_red_)
     shirt_white = ImageTk.PhotoImage(shirt_white_)
     floor = ImageTk.PhotoImage(floor_)
+    wall = ImageTk.PhotoImage(wall_)
     character_1 = ImageTk.PhotoImage(character_1_)
     character_2 = ImageTk.PhotoImage(character_2_)
 
@@ -333,11 +336,9 @@ def draw(level, root):
         level_map[y] = level_map[y].strip().split(" ")
         for x in range(len(level_map[y])):
             if level_map[y][x] == "0":
-                game_canvas.create_rectangle(x * box_side, y * box_side, (x + 1) * box_side, (y + 1) * box_side, fill = "black")
+                game_canvas.create_image(x * box_side, y * box_side, image = wall, anchor = NW)
             elif level_map[y][x] == "1":
-                fl = game_canvas.create_image(x * box_side, y * box_side, image = floor, anchor = NW)
-                game_canvas.tag_raise(fl)
-                # game_canvas.create_rectangle(x * box_side, y * box_side, (x + 1) * box_side, (y + 1) * box_side, outline = "white", fill = "white")
+                game_canvas.create_image(x * box_side, y * box_side, image = floor, anchor = NW)
             elif level_map[y][x] == "2":
                 game_canvas.create_rectangle(x * box_side, y * box_side, (x + 1) * box_side, (y + 1) * box_side, outline = "blue", fill = "blue")
             elif level_map[y][x] == "3":
@@ -478,7 +479,7 @@ def menu_start():
 
 
 root = Tk()
-full_width, full_height = root.winfo_screenwidth(), root.winfo_screenheight() - 100
+full_width, full_height = root.winfo_screenwidth(), root.winfo_screenheight()
 root.geometry("%dx%d+0+0" % (full_width, full_height))
 # root.wm_attributes('-fullscreen', 1)
 
