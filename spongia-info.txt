@@ -1,0 +1,14 @@
+Názov tímu: Kublovi Hoši
+Názov hry: Shirt Run
+Vývojové prostredie a prostriedky: pure Python, Photoshop CC, FamiTracker, Atom
+
+Použité treťostranové knižnice: simpleaudio, PIL(pillow)
+
+Grafika:
+  Všetka grafika je vlastná
+
+Hudba:
+  Všetka hudba je vlastná
+
+Poznámka:
+  Exe súbor nám nešlo vytvoriť, preto je treba spustiť súbor main.py (je treba mať nainštalované treťostranové knižnice)

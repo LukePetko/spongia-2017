@@ -4,8 +4,6 @@ from random import *
 from PIL import Image, ImageTk
 import simpleaudio
 
-import sys
-
 class Shirt:
     pass
 
@@ -16,7 +14,6 @@ class Music(Thread):
             play_obj = wave_obj.play()
             play_obj.wait_done()
         root.destroy()
-        quit()
 
 hudba = Music()
 
