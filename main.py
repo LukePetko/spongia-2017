@@ -2,8 +2,8 @@ from tkinter import *
 from threading import *
 from random import *
 from PIL import Image, ImageTk
-#import simpleaudio
-#import cx_freeze
+import simpleaudio
+
 import sys
 
 class Shirt:
