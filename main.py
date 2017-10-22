@@ -141,6 +141,15 @@ def movement():
                             shirt_new()
                             povolenie = 0
                             rychlost_p1 = 8 # oblecie si tenisky
+                if shirt_positions[i].color == "pyimage15": #podla farby vyberie velkost okolo tricka ktoru pripocita..
+                    velkost = 1.0 #topanky
+
+                    if (shirt_positions[i].x_sur < int(game_canvas.coords(player_two)[0]) and shirt_positions[i].x_sur + int(velkost * box_side) > int(game_canvas.coords(player_two)[0]) and shirt_positions[i].y_sur < int(game_canvas.coords(player_two)[1]) and shirt_positions[i].y_sur + int(velkost * box_side) > int(game_canvas.coords(player_two)[1])) or (shirt_positions[i].x_sur < int(game_canvas.coords(player_two)[0] + box_side) and shirt_positions[i].x_sur + int(velkost * box_side) > int(game_canvas.coords(player_two)[0] + box_side) and shirt_positions[i].y_sur < int(game_canvas.coords(player_two)[1]) and shirt_positions[i].y_sur + int(velkost * box_side) > int(game_canvas.coords(player_two)[1])) or (shirt_positions[i].x_sur < int(game_canvas.coords(player_two)[0]) and shirt_positions[i].x_sur + int(velkost * box_side) > int(game_canvas.coords(player_two)[0]) and shirt_positions[i].y_sur < int(game_canvas.coords(player_two)[1] + 1.92 * box_side) and shirt_positions[i].y_sur + int(velkost * box_side) > int(game_canvas.coords(player_two)[1] + 1.92 * box_side)) or (shirt_positions[i].x_sur < int(game_canvas.coords(player_two)[0] + box_side) and shirt_positions[i].x_sur + int(velkost * box_side) > int(game_canvas.coords(player_two)[0] + box_side) and shirt_positions[i].y_sur < int(game_canvas.coords(player_two)[1] + 1.92 * box_side) and shirt_positions[i].y_sur + int(velkost * box_side) > int(game_canvas.coords(player_two)[1] + 1.92 * box_side)) or (shirt_positions[i].x_sur < int(game_canvas.coords(player_two)[0] + 0.5 * box_side) and shirt_positions[i].x_sur + int(velkost * box_side) > int(game_canvas.coords(player_two)[0] + 0.5 * box_side) and shirt_positions[i].y_sur < int(game_canvas.coords(player_two)[1] + 0.96 * box_side) and shirt_positions[i].y_sur + int(velkost * box_side) > int(game_canvas.coords(player_two)[1] + 0.96 * box_side)):
+                        if rychlost_p2 == 4 or rychlost_p2 == 8:
+                            neviem = i
+                            shirt_new()
+                            povolenie = 0
+                            rychlost_p2 = 2 # oblecie si velkost nohy
 
 
             if level_map[int(game_canvas.coords(player_one)[0]) // box_side][int(game_canvas.coords(player_one)[1] + 1.92 * box_side) // box_side] == "3":
@@ -219,7 +228,7 @@ def movement():
                             v1_p2 = 1 # oblecie si velkost 1
                             game_canvas.itemconfig(player_two, image = p2_tricko1)
 
-
+                #======rychlost hraca=================================================================
                 if shirt_positions[i].color == "pyimage14": #podla farby vyberie velkost okolo tricka ktoru pripocita..
                     velkost = 1.0 #tenisky
 
@@ -229,7 +238,15 @@ def movement():
                             shirt_new()
                             povolenie = 0
                             rychlost_p2 = 8 # oblecie si velkost nohy
+                if shirt_positions[i].color == "pyimage15": #podla farby vyberie velkost okolo tricka ktoru pripocita..
+                    velkost = 1.0 #topanky
 
+                    if (shirt_positions[i].x_sur < int(game_canvas.coords(player_two)[0]) and shirt_positions[i].x_sur + int(velkost * box_side) > int(game_canvas.coords(player_two)[0]) and shirt_positions[i].y_sur < int(game_canvas.coords(player_two)[1]) and shirt_positions[i].y_sur + int(velkost * box_side) > int(game_canvas.coords(player_two)[1])) or (shirt_positions[i].x_sur < int(game_canvas.coords(player_two)[0] + box_side) and shirt_positions[i].x_sur + int(velkost * box_side) > int(game_canvas.coords(player_two)[0] + box_side) and shirt_positions[i].y_sur < int(game_canvas.coords(player_two)[1]) and shirt_positions[i].y_sur + int(velkost * box_side) > int(game_canvas.coords(player_two)[1])) or (shirt_positions[i].x_sur < int(game_canvas.coords(player_two)[0]) and shirt_positions[i].x_sur + int(velkost * box_side) > int(game_canvas.coords(player_two)[0]) and shirt_positions[i].y_sur < int(game_canvas.coords(player_two)[1] + 1.92 * box_side) and shirt_positions[i].y_sur + int(velkost * box_side) > int(game_canvas.coords(player_two)[1] + 1.92 * box_side)) or (shirt_positions[i].x_sur < int(game_canvas.coords(player_two)[0] + box_side) and shirt_positions[i].x_sur + int(velkost * box_side) > int(game_canvas.coords(player_two)[0] + box_side) and shirt_positions[i].y_sur < int(game_canvas.coords(player_two)[1] + 1.92 * box_side) and shirt_positions[i].y_sur + int(velkost * box_side) > int(game_canvas.coords(player_two)[1] + 1.92 * box_side)) or (shirt_positions[i].x_sur < int(game_canvas.coords(player_two)[0] + 0.5 * box_side) and shirt_positions[i].x_sur + int(velkost * box_side) > int(game_canvas.coords(player_two)[0] + 0.5 * box_side) and shirt_positions[i].y_sur < int(game_canvas.coords(player_two)[1] + 0.96 * box_side) and shirt_positions[i].y_sur + int(velkost * box_side) > int(game_canvas.coords(player_two)[1] + 0.96 * box_side)):
+                        if rychlost_p1 == 4 or rychlost_p1 == 8:
+                            neviem = i
+                            shirt_new()
+                            povolenie = 0
+                            rychlost_p1 = 2 # oblecie si velkost nohy
 
 
 
@@ -256,7 +273,7 @@ t = 12
 pressed = {}
 #==========================================================================================
 def shirt_new():
-    global box_side, full_height, root, level_map, game_start, shirt_yellow, shirt_list, povolenie, neviem, tenisky_
+    global box_side, full_height, root, level_map, game_start, shirt_yellow, shirt_list, povolenie, neviem, tenisky_, topanky_
     if povolenie == 1: #toto je asi zatial zbytocne, chcel som aby si nemohol drzat "j" a zbierat tricka :((((
         game_canvas.delete(shirt_positions[neviem].id)
         x_sur = randint(2 * box_side, full_height - 2 * box_side)
@@ -265,7 +282,7 @@ def shirt_new():
             x_sur = randint(2 * box_side, full_height - 2 * box_side)
             y_sur = randint(2 * box_side, full_height - 2 * box_side)
 
-        shirt_random = choice([shirt_yellow, shirt_blue, shirt_red, shirt_white, tenisky_])
+        shirt_random = choice([shirt_yellow, shirt_blue, shirt_red, shirt_white, tenisky_, topanky_])
 
         shirt_list[shirt_positions[neviem].number] = game_canvas.create_image(x_sur, y_sur, image = shirt_random, anchor = NW, tags = "shirts")
 
@@ -281,14 +298,14 @@ def shirt_new():
         level_map[y_sur // box_side][x_sur // box_side] = "t"
 #=======================================================================================
 def shirt_init():
-    global box_side, root, level_map, game_start, shirt_yellow, shirt_list, tenisky_
+    global box_side, root, level_map, game_start, shirt_yellow, shirt_list, tenisky_, topanky_
     x_sur = randint(2 * box_side, full_height - 2 * box_side)
     y_sur = randint(2 * box_side, full_height - 2 * box_side)
     while level_map[y_sur // box_side][x_sur // box_side] in ["0", "2", "3", "p1", "p2", "t"] or (level_map[y_sur // box_side][x_sur // box_side + 1] in ["0", "2", "3", "p1", "p2", "t"]) or level_map[y_sur // box_side + 1][x_sur // box_side] in ["0", "2", "3", "p1", "p2", "t"] or level_map[y_sur // box_side + 1][x_sur // box_side + 1] in ["0", "2", "3", "p1", "p2", "t"]:
         x_sur = randint(2 * box_side, full_height - 2 * box_side)
         y_sur = randint(2 * box_side, full_height - 2 * box_side)
 
-    shirt_random = choice([shirt_yellow, shirt_blue, shirt_red, shirt_white, tenisky_])
+    shirt_random = choice([shirt_yellow, shirt_blue, shirt_red, shirt_white, tenisky_, topanky_])
 
     shirt_list[shirt_count] = game_canvas.create_image(x_sur, y_sur, image = shirt_random, anchor = NW, tags = "shirts")
 
@@ -305,7 +322,7 @@ def shirt_init():
 
 
 def draw(level, root):
-    global game_canvas, full_height, box_side, level_map, shirt_yellow, shirt_red, shirt_blue, shirt_list, shirt_count, player_one, player_two, shirt_white, floor, character_1, character_2, p1_tricko1, p1_tricko2, p1_tricko3, p1_tricko4, p2_tricko1, p2_tricko2, p2_tricko3, p2_tricko4, p2_skore_desiatky, p2_skore_jednotky, p1_skore_desiatky, p1_skore_jednotky, cisla_skore, wall, vyhra_p1, vyhra_p2, remiza, tenisky_
+    global game_canvas, full_height, box_side, level_map, shirt_yellow, shirt_red, shirt_blue, shirt_list, shirt_count, player_one, player_two, shirt_white, floor, character_1, character_2, p1_tricko1, p1_tricko2, p1_tricko3, p1_tricko4, p2_tricko1, p2_tricko2, p2_tricko3, p2_tricko4, p2_skore_desiatky, p2_skore_jednotky, p1_skore_desiatky, p1_skore_jednotky, cisla_skore, wall, vyhra_p1, vyhra_p2, remiza, tenisky_, topanky_
     level_file = open(level)
     level_map = level_file.readlines()
     box_side = full_height // len(level_map[0].strip().split(" "))
@@ -320,6 +337,7 @@ def draw(level, root):
     character_1_ = Image.open("img/postava_1.gif").resize((int(1 * box_side), int(1.83 * box_side)), Image.ANTIALIAS)
     character_2_ = Image.open("img/postava_2.gif").resize((int(1 * box_side), int(1.83 * box_side)), Image.ANTIALIAS)
     shoes_ = Image.open("img/tenisky.gif").resize((int(1.0 * box_side), int(1.0 * box_side)), Image.ANTIALIAS)
+    boots_ = Image.open("img/topanky.gif").resize((int(1.0 * box_side), int(1.0 * box_side)), Image.ANTIALIAS)
 
     p1_tricko1_ = Image.open("img/p1_tricka/p1_tricko1.gif").resize((int(1 * box_side), int(1.83 * box_side)), Image.ANTIALIAS)
     p1_tricko2_ = Image.open("img/p1_tricka/p1_tricko2.gif").resize((int(1 * box_side), int(1.83 * box_side)), Image.ANTIALIAS)
@@ -344,6 +362,7 @@ def draw(level, root):
     character_1 = ImageTk.PhotoImage(character_1_)
     character_2 = ImageTk.PhotoImage(character_2_)
     tenisky_ = ImageTk.PhotoImage(shoes_)
+    topanky_ = ImageTk.PhotoImage(boots_)
 
 
     p1_tricko1 = ImageTk.PhotoImage(p1_tricko1_)
